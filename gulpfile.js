@@ -19,10 +19,10 @@ const runSequence = require("run-sequence");
  */
 
 const paths = {
-  styles: ["./src/client/css/*.css"],
-  scripts: ["./src/client/js/*.js"],
-  server: ["./src/server/bin/www"],
-  distServer: ["./dist/server/bin/www"]
+  styles: "./src/client/css/*.css",
+  scripts: "./src/client/js/*.js",
+  server: "./src/server/bin/www",
+  distServer: "./dist/server/bin/www"
 };
 
 const nodemonConfig = {
