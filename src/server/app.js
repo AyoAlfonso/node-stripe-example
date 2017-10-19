@@ -8,7 +8,7 @@ const favicon = require("serve-favicon");
 const logger = require("morgan");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const swig = require("swig");
+const { Swig } = require("swig");
 
 // *** routes *** //
 const routes = require("./routes/index.js");
@@ -17,7 +17,7 @@ const routes = require("./routes/index.js");
 const app = express();
 
 // *** view engine *** //
-var swig = new swig.Swig();
+const swig = new Swig();
 app.engine("html", swig.renderFile);
 app.set("view engine", "html");
 
