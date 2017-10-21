@@ -27,23 +27,33 @@ router.get('/products/:name', function(req, res, next) {
 
 router.post('/charge', function(req, res,next) {
   var stripeToken = req.body.stripeToken;
+  var price = req.body.price;
   var amount = req.body.price * 100;
+  var productName = req.body.name;
 
-  // ensure amount === actual product amount to avoid fraud
+  for (var i = 0; i < products.length; i++) {
+    if (productName === products[i].productName && parseFloat(price) === parseFloat(products[i].productPrice)) {
+      // ensure amount === actual product amount to avoid fraud
 
-  stripe.charges.create({
-    card: stripeToken,
-    currency: 'usd',
-    amount: amount
-  },
-  function(err, charge) {
-    if (err) {
-      console.log(err);
-      res.send('error');
+      stripe.charges.create({
+        card: stripeToken,
+        currency: 'usd',
+        amount: amount
+      },
+      function(err, charge) {
+        if (err) {
+          console.log(err);
+          res.send('error');
+        } else {
+          res.send('success');
+        }
+      });
+
     } else {
-      res.send('success');
+      console.log('Product name or price mismatch');
+      res.send('error');
     }
-  });
+  }
 });
 
 module.exports = router;
