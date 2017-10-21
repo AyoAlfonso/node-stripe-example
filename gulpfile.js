@@ -35,13 +35,13 @@ var paths = {
 };
 
 var nodemonConfig = {
-  script: paths.server,
+  script: paths.server[0],
   ext: 'html js css',
   ignore: ['node_modules']
 };
 
 var nodemonDistConfig = {
-  script: paths.distServer,
+  script: paths.distServer[0],
   ext: 'html js css',
   ignore: ['node_modules']
 };

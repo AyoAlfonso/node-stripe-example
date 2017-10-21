@@ -4,6 +4,7 @@ var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 var products = [
   {
+    uuid: 1,
     productName: 'Soylent',
     productDescription: 'Meal replacement that tastes like pancake batter.',
     productPrice: 10.99
@@ -14,10 +15,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/products/:name', function(req, res, next) {
-  var productName = req.params.name;
+router.get('/products/:uuid', function(req, res, next) {
+  var productID = req.params.uuid;
   for (var i = 0; i < products.length; i++) {
-    if(productName === products[i].productName) {
+    if(parseInt(productID) === products[i].uuid) {
       return res.render('product', {productInfo: products[i]});
     } else {
       return res.send('Product does not exist.');
@@ -34,7 +35,6 @@ router.post('/charge', function(req, res,next) {
   for (var i = 0; i < products.length; i++) {
     if (productName === products[i].productName && parseFloat(price) === parseFloat(products[i].productPrice)) {
       // ensure amount === actual product amount to avoid fraud
-
       stripe.charges.create({
         card: stripeToken,
         currency: 'usd',
