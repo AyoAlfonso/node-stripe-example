@@ -26,4 +26,4 @@ Node + Express + Stripe
     Stripe.setPublishableKey('UPDATE ME');
     ```
 
-1. Fire up the app - `gulp`. Then, navigate to [http://localhost:5000/products/1](http://localhost:5000/products/1) in your browser of choice.
+1. Fire up the app - `npm start`. Then, navigate to [http://localhost:3000/products/1](http://localhost:3000/products/1) in your browser of choice.

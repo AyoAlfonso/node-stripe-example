@@ -1,8 +1,6 @@
 Stripe.setPublishableKey("UPDATE ME");
 
-$(document).on("ready", () => {
-  $("form-errors").hide();
-});
+$(document).on("ready", () => { $("form-errors").hide(); });
 
 $("#product-form").on("submit", event => {
   event.preventDefault();
@@ -20,11 +18,11 @@ $("#product-form").on("submit", event => {
   );
 
   $("#submit-btn").prop("disabled", true);
+
 });
 
 const stripeResponseHandler = (status, response) => {
   const $form = $("#product-form");
-
   if (response.error) {
     // Show the errors on the form
     $("#form-errors").show();
@@ -39,8 +37,4 @@ const stripeResponseHandler = (status, response) => {
     console.log($form.get(0));
     $form.get(0).submit();
   }
-<<<<<<< HEAD
-}
-=======
 };
->>>>>>> c010b2a667059ebbe5c0faa200be7b616822a450
