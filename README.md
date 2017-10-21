@@ -10,20 +10,20 @@ Node + Express + Stripe
 
 1. Install dependencies:
 
-  ```sh
-  $ npm install
-  ```
+    ```sh
+    $ npm install
+    ```
 
 1. create a *.env* and add the following env variable:
 
-  ```
-  STRIPE_SECRET_KEY=ADD-YOUR-OWN-KEY
-  ```
+    ```
+    STRIPE_SECRET_KEY=ADD-YOUR-OWN-KEY
+    ```
 
 1. update *src/client/js/main.js* with your publishable key:
 
-  ```javascript
-  Stripe.setPublishableKey('UPDATE ME');
-  ```
+    ```javascript
+    Stripe.setPublishableKey('UPDATE ME');
+    ```
 
-1. Fire up the app - `gulp`. Then, navigate to [http://localhost:5000/products/1](http://localhost:5000/products/1) in your browser of choice. 
+1. Fire up the app - `gulp`. Then, navigate to [http://localhost:5000/products/1](http://localhost:5000/products/1) in your browser of choice.
