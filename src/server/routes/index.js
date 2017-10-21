@@ -1,8 +1,8 @@
-var express = require('express');
-var router = express.Router();
-var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const express = require("express");
+const router = express.Router();
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
-var products = [
+const products = [
   {
     uuid: 1,
     productName: 'Soylent',
@@ -11,8 +11,8 @@ var products = [
   }
 ];
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", (req, res, next) => {
+  res.render("index", { title: "Express" });
 });
 
 router.get('/products/:uuid', function(req, res, next) {
@@ -21,7 +21,7 @@ router.get('/products/:uuid', function(req, res, next) {
     if(parseInt(productID) === products[i].uuid) {
       return res.render('product', {productInfo: products[i]});
     } else {
-      return res.send('Product does not exist.');
+      return res.send("Product does not exist.");
     }
   }
 });
